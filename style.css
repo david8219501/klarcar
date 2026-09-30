@@ -1,0 +1,137 @@
+/* ===== צבעים וגופנים ===== */
+:root {
+  --asphalt: #1F2A30;   /* טקסט ורקעים כהים */
+  --road:    #3B4A52;   /* טקסט משני */
+  --sixt:    #F26A1B;   /* כתום – כפתורים */
+  --plate:   #F7C600;   /* צהוב לוחית רישוי */
+  --mist:    #EEF1F2;   /* רקע אזורים */
+  --white:   #FFFFFF;
+  --radius:  10px;
+  --max:     1120px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: "Assistant", Arial, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: var(--asphalt);
+  background: var(--white);
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; }
+h1, h2, h3 { font-family: "Secular One", "Assistant", sans-serif; font-weight: 400; line-height: 1.15; margin: 0 0 .5em; }
+h1 { font-size: clamp(2.2rem, 6vw, 3.8rem); }
+h2 { font-size: clamp(1.7rem, 4vw, 2.4rem); }
+h3 { font-size: 1.3rem; }
+
+section { padding: clamp(3rem, 8vw, 6rem) 1.25rem; }
+section > * { max-width: var(--max); margin-inline: auto; }
+
+:focus-visible { outline: 3px solid var(--sixt); outline-offset: 3px; }
+
+/* ===== סרגל עליון ===== */
+.topbar {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: .75rem 1.25rem;
+  background: var(--asphalt); color: var(--white);
+}
+.brand { text-decoration: none; font-family: "Secular One", sans-serif; font-size: 1.25rem; }
+.brand span { font-family: "Assistant", sans-serif; font-size: .9rem; opacity: .7; margin-inline-start: .5rem; }
+.topbar-call { text-decoration: none; font-weight: 700; color: var(--plate); }
+
+/* ===== כפתורים ===== */
+.btn {
+  display: inline-block; padding: .85rem 1.6rem; border-radius: var(--radius);
+  font: 700 1.05rem "Assistant", sans-serif; text-decoration: none; cursor: pointer; border: 2px solid transparent;
+}
+.btn-primary { background: var(--sixt); color: var(--white); }
+.btn-primary:hover { background: #d95a10; }
+.btn-ghost { border-color: var(--asphalt); }
+.btn-ghost:hover { background: var(--asphalt); color: var(--white); }
+
+/* ===== פתיחה ===== */
+.hero {
+  display: grid; gap: 2rem; align-items: center;
+  grid-template-columns: 1fr 1.1fr;
+  max-width: var(--max); margin: 0 auto;
+}
+.hero > * { margin: 0; }
+.lead { font-size: 1.25rem; color: var(--road); max-width: 32em; }
+
+/* לוחית רישוי – האלמנט הבולט בעמוד */
+.plate {
+  display: inline-flex; align-items: stretch; direction: ltr;
+  margin: 1.5rem 0; border: 3px solid var(--asphalt); border-radius: 8px;
+  background: var(--plate); overflow: hidden;
+  box-shadow: 0 6px 0 var(--asphalt);
+}
+.plate-il {
+  display: flex; align-items: flex-end; padding: .3rem .45rem;
+  background: #1E4FA0; color: var(--white); font: 700 .85rem Arial, sans-serif;
+}
+.plate a {
+  padding: .35rem 1.1rem; text-decoration: none;
+  font: 700 clamp(1.8rem, 4.5vw, 2.6rem) Arial, sans-serif; letter-spacing: .06em;
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+
+/* ===== שלבים ===== */
+.steps { background: var(--mist); }
+.steps ol {
+  list-style: none; padding: 0; counter-reset: step;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;
+}
+.steps li { counter-increment: step; border-top: 4px solid var(--asphalt); padding-top: 1rem; }
+.steps li::before {
+  content: counter(step);
+  display: block; font: 2.5rem "Secular One", sans-serif; color: var(--sixt); line-height: 1;
+  margin-bottom: .5rem;
+}
+.steps p { margin: 0; color: var(--road); }
+
+/* ===== יתרונות ===== */
+.perks { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; max-width: var(--max); margin: 0 auto; }
+.perks > * { margin: 0; }
+.perks dl { margin: 0; }
+.perks dt { font-weight: 700; font-size: 1.2rem; margin-top: 1.25rem; }
+.perks dd { margin: .2rem 0 0; color: var(--road); }
+
+/* ===== שאלות נפוצות ===== */
+.faq { background: var(--mist); }
+.faq h2 { max-width: 760px; }
+.faq details { max-width: 760px; background: var(--white); border-radius: var(--radius); margin-bottom: .6rem; }
+.faq summary { cursor: pointer; padding: 1rem 1.25rem; font-weight: 700; list-style: none; position: relative; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; position: absolute; left: 1.25rem; font-size: 1.4rem; line-height: 1; }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { margin: 0; padding: 0 1.25rem 1.1rem; color: var(--road); }
+
+/* ===== טופס ===== */
+.contact h2 { max-width: 760px; }
+.contact form { max-width: 760px; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.contact label { display: grid; gap: .3rem; font-weight: 600; }
+.contact input, .contact textarea {
+  font: inherit; padding: .7rem .9rem; border: 2px solid #C9D0D3; border-radius: var(--radius); background: var(--white);
+}
+.contact input:focus, .contact textarea:focus { border-color: var(--asphalt); outline: none; }
+.wide { grid-column: 1 / -1; }
+.form-status { margin: 0; font-weight: 700; }
+
+/* ===== תחתית ===== */
+.footer { background: var(--asphalt); color: var(--white); text-align: center; padding: 2.5rem 1.25rem; }
+.footer p { margin: .3rem 0; }
+.footer .small { opacity: .6; font-size: .9rem; }
+
+/* ===== מובייל ===== */
+@media (max-width: 800px) {
+  .hero, .perks { grid-template-columns: 1fr; }
+  .hero-img { order: -1; }
+  .steps ol { grid-template-columns: 1fr; }
+  .contact form { grid-template-columns: 1fr; }
+  .brand span { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
